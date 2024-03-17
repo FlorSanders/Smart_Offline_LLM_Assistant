@@ -4,5 +4,6 @@
     "mic_from_file": false,
     "mic_file_path": "./microphone.wav",
     "wakeword_model_path": "./models/wakeword/hey_jarvis_v0.1.tflite",
-    "wakeword_threshold": 0.99
+    "wakeword_threshold": 0.99,
+    "wakeword_sound": "./assets/sounds/Whistleronic.wav"
 }
