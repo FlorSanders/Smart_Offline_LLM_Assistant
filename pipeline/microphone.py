@@ -41,6 +41,16 @@ class Microphone:
         self.audio = None
         self.stream = None
 
+    @property
+    def is_open(self):
+        """
+        Check if microphone is open
+        ---
+        Returns:
+        - is_open: True if microphone is open, False otherwise.
+        """
+        return self.audio is not None and self.stream is not None
+
     def open(self):
         """
         Open microphone audio stream
