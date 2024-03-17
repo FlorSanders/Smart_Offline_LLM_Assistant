@@ -42,7 +42,10 @@ class Microphone:
         self.stream = None
 
     def open(self):
-        """ """
+        """
+        Open microphone audio stream
+        ---
+        """
 
         # Log
         self.logger.debug("Starting microphone stream")
@@ -67,6 +70,12 @@ class Microphone:
             )
 
     def record(self, duration=30):
+        """
+        Record audio fragment to file
+        ---
+        Args:
+        - duration (default = 30): Recording duration in seconds
+        """
         with wave.open(self.file_path, "wb") as wav_file:
             wav_file.setnchannels(self.channels)
             wav_file.setsampwidth(self.audio.get_sample_size(self.format))
@@ -77,6 +86,12 @@ class Microphone:
                 wav_file.writeframes(data)
 
     def read_chunk(self):
+        """
+        Read a chunk of data from the microphone
+        ---
+        Returns:
+        - data: Audio chunk
+        """
         # Read chunk from mic
         if self.from_file:
             data = self.wav_file.readframes(self.chunk)
@@ -89,6 +104,11 @@ class Microphone:
         return data
 
     def close(self):
+        """
+        Close the microphone audio stream
+        ---
+        """
+
         # Log
         self.logger.debug("Stopping microphone stream")
 
