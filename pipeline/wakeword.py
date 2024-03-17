@@ -5,9 +5,6 @@ from openwakeword import Model
 from .utils import get_logger
 from .microphone import Microphone
 
-# Download models
-openwakeword.utils.download_models(target_directory="./models/wakeword")
-
 
 class Wakeword:
     """
@@ -26,12 +23,19 @@ class Wakeword:
         # Configuration
         self.threshold = config.get("wakeword_threshold")
         self.model_path = config.get("wakeword_model_path")
-        model_name, model_ext = os.path.splitext(os.path.basename(self.model_path))
+        model_dir, model_file = os.path.split(self.model_path)
+        model_name, model_ext = os.path.splitext(model_file)
         self.model_name = model_name
         self.framework = model_ext[1:]
         self.last_detected = False
 
-        # Model
+        # Donwload model
+        if config["wakeword_download_model"] and not os.path.exists(self.model_path):
+            openwakeword.utils.download_models(
+                model_names=[model_name], target_directory=model_dir
+            )
+
+        # Initialize model
         self.model = Model(
             wakeword_models=[self.model_path], inference_framework=self.framework
         )
