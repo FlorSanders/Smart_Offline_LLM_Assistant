@@ -1,0 +1,6 @@
+{
+    "mic_chunk": 1280,
+    "mic_rate": 16000,
+    "mic_from_file": false,
+    "mic_file_path": "./microphone.wav"
+}
