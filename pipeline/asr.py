@@ -202,7 +202,7 @@ class CoquiModel(ASRModel):
         # Transcribe audio
         counter = 0
         result = ""
-        while not (counter > 5 and result != ""):
+        while not (counter > 10 and result != ""):
             data = self.mic.read_chunk()
             stream_context.feedAudioContent(data)
             tmp_result = stream_context.intermediateDecode()
