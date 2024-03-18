@@ -9,5 +9,10 @@
     "wakeword_sound": "./assets/sounds/Whistleronic.wav",
     "asr_model": "vosk",
     "asr_model_dir": "./models/asr/",
-    "asr_download_model": true
+    "asr_download_model": true,
+    "tts_model": "piper",
+    "tts_model_dir": "./models/tts/",
+    "tts_download_model": true,
+    "tts_voice": "ryan",
+    "tts_file": "./tts.wav"
 }

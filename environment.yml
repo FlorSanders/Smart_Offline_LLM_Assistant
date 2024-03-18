@@ -20,6 +20,8 @@ dependencies:
       - onnxruntime==1.17.1
       - openwakeword==0.6.0
       - packaging==24.0
+      - piper-phonemize==1.1.0
+      - piper-tts==1.2.0
       - protobuf==5.26.0
       - pycparser==2.21
       - requests==2.31.0

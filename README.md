@@ -45,9 +45,27 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
 
 This repository is a work in progress, some things that remain to be done are:
 
-- [ ] Automatic Speech Recognition Model
-- [ ] Speech to Text Model
+- [ ] Automatic Speech Recognition Model, integrate multiple models:
+  - [ ] [Distill Whisper Small](https://huggingface.co/distil-whisper/distil-small.en)
+  - [ ] [Quartznet](https://catalog.ngc.nvidia.com/orgs/nvidia/models/quartznet15x5) -> [Jetson Voice Package](https://github.com/dusty-nv/jetson-voice?tab=readme-ov-file#automatic-speech-recognition-asr)
+  - [ ] [Mozilla Deepspeech](https://deepspeech.readthedocs.io/en/r0.9/index.html)
+  - [x] [Vosk](https://alphacephei.com/vosk/install)
+- [ ] Speech to Text Model, Integrate multiple models:
+  - [x] [Piper](https://github.com/rhasspy/piper)
+  - [ ] [Microsoft Lightspeech](https://github.com/microsoft/NeuralSpeech/tree/master/LightSpeech)
+  - [ ] [EfficientSpeech](https://github.com/roatienza/efficientspeech)
 - [ ] Speaker Identification Model
 - [ ] LLM Integration
 - [ ] LLM Tool Learning
 - [ ] Tool Access Integration
+
+## Similar Projects
+
+This project is supposed to be a proof-of-concept.  
+There are a lot of interesting projects out there that are developed to a more mature point.  
+Go check them out!
+
+- [Leon](https://github.com/leon-ai/leon)
+- [Mycroft](https://github.com/MycroftAI/mycroft-core)
+- [rhasspy3](https://github.com/rhasspy/rhasspy3/)
+- [and more...](https://github.com/topics/voice-assistants)

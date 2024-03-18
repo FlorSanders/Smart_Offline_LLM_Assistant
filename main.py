@@ -7,6 +7,7 @@ from pipeline.microphone import Microphone
 from pipeline.wakeword import Wakeword
 from pipeline.audio import play_wave_file
 from pipeline.asr import ASR
+from pipeline.tts import TTS
 
 
 def main(config_path: str = "./config.json", log_level: str = "INFO"):
@@ -28,6 +29,9 @@ def main(config_path: str = "./config.json", log_level: str = "INFO"):
     # Initalize asr
     asr = ASR(config, mic)
 
+    # Intialize tts
+    tts = TTS(config)
+
     # Detect wakeword
     while True:
         # Detect wakeword
@@ -44,6 +48,12 @@ def main(config_path: str = "./config.json", log_level: str = "INFO"):
 
         # Transcribe audio
         transcription = asr.transcribe()
+
+        # Process transcription TODO
+        response = transcription
+
+        # Speak response
+        tts.speak(response)
 
         # Sleep some time
         time.sleep(0.1)
