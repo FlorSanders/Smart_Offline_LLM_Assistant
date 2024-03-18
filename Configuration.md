@@ -29,6 +29,15 @@ Their configuration options are listed below.
 - `asr_model_dir`: ASR model weights directory.
 - `asr_download_model`: Automatically download model weights to `asr_model_dir`.
 
+## Large Language Model
+
+This project aims to support interfacing with multiple LLMs.
+Their configuration options are listed below:
+
+- `llm_skip`: Whether to skip the LLM altogether (used for testing).
+- `llm_model`: Name of the LLM model (supported values listed at the end of [llm.py](./pipeline/llm.py))
+- `llm_system_message`: System message to send to the LLM.
+
 ## Text-to-Speech
 
 This project aims to support multiple TTS engines.  
@@ -39,3 +48,5 @@ Their configuration options are listed below.
 - `tts_download_model`: Automatically download model weights to `tts_model_dir`.
 - `tts_voice`: Which voice to use for synthesis (if model has multiple options).
 - `tts_file`: Temporary wav file to store the synthesized audio in.
+- `tts_done_sound`: Path to end of TTS chime sound `.wav` file.
+  - NOTE: A collection of notification sounds is availables in the [assets/sounds](./assets/sounds/) directory.

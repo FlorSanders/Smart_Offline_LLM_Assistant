@@ -46,6 +46,12 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
 
 1. CLI Tool built on [Typer](https://github.com/tiangolo/typer)
 2. Wakeword Detection with [openWakeWord](https://github.com/dscripka/openWakeWord)
+3. Automatic Speech Recognition / Speech-to-Text with:
+   - [Vosk](https://alphacephei.com/vosk/install)
+4. Large Language Models, based on:
+   - [OpenAI GPT](https://openai.com/gpt-4)
+5. Speech Synthesis / Text-to-Speech with:
+   - [Piper](https://github.com/rhasspy/piper)
 
 ## TODO
 

@@ -6,6 +6,7 @@ from .microphone import Microphone
 from .llm import LLM
 from .tts import TTS
 import time
+import os
 
 
 def run_pipeline(config_path, log_level):
@@ -30,7 +31,10 @@ def run_pipeline(config_path, log_level):
     wakeword = Wakeword(config, mic)
     asr = ASR(config, mic)
     # TODO: switch out llm for tool-llm, with a plan-execute-summarize feedback loop
-    llm = LLM(config)
+    if config["llm_skip"]:
+        llm = None
+    else:
+        llm = LLM(config)
     tts = TTS(config)
 
     # Run pipeline
@@ -45,19 +49,26 @@ def run_pipeline(config_path, log_level):
             break
 
         # Play wakeword chime
-        logger.debug("Playing wakeword chime")
-        play_wave_file(config["wakeword_sound"])
+        if os.path.exists(config["wakeword_sound"]):
+            logger.debug("Playing wakeword chime")
+            play_wave_file(config["wakeword_sound"])
 
         # Transcribe audio
         prompt = asr.transcribe()
 
         # Process prompt
-        response = llm(prompt)
+        if config["llm_skip"]:
+            response = prompt
+        else:
+            response = llm(prompt)
 
         # Speak response
         tts.speak(response)
 
         # Play TTS done chime
-        time.sleep(0.1)
-        logger.debug("Playing TTS done chime")
-        play_wave_file(config["tts_done_sound"])
+        logger.debug("Sleeping...")
+        time.sleep(0.25)
+        if os.path.exists(config["tts_done_sound"]):
+            logger.debug("Playing TTS done chime")
+            play_wave_file(config["tts_done_sound"])
+            time.sleep(0.1)
