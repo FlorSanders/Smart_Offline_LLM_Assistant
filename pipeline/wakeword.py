@@ -30,6 +30,7 @@ class Wakeword:
         self.last_detected = False
 
         # Donwload model
+        openwakeword.utils.download_models(["melspectrogram"])
         if config.get("wakeword_download_model", False) and not os.path.exists(
             self.model_path
         ):

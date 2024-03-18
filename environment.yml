@@ -2,10 +2,10 @@ name: llm_voice_assistant
 channels:
   - defaults
 dependencies:
-  - pip
   - python==3.9.18
-  - typer
   - pyaudio
+  - typer
+  - numpy
   - openai
   - python-dotenv
   - pip:
