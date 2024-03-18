@@ -30,7 +30,9 @@ class Wakeword:
         self.last_detected = False
 
         # Donwload model
-        if config["wakeword_download_model"] and not os.path.exists(self.model_path):
+        if config.get("wakeword_download_model", False) and not os.path.exists(
+            self.model_path
+        ):
             openwakeword.utils.download_models(
                 model_names=[model_name], target_directory=model_dir
             )
