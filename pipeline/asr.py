@@ -24,7 +24,7 @@ class ASR:
 
         # Logger
         self.logger = get_logger()
-        self.logger.debug("Configurating ASR")
+        self.logger.debug("Configuring ASR")
 
         # Microphone
         self.model_config = models[config.get("asr_model")]
@@ -59,7 +59,7 @@ class ASRModel:
 
         # Logger
         self.logger = get_logger()
-        self.logger.debug("Configurating ASR Model")
+        self.logger.debug("Configuring ASR Model")
 
         # Microphone
         self.mic = mic

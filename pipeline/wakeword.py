@@ -15,7 +15,7 @@ class Wakeword:
     def __init__(self, config: dict, mic: Microphone):
         # Logger
         self.logger = get_logger()
-        self.logger.debug("Configurating Wakeword")
+        self.logger.debug("Configuring Wakeword")
 
         # Microphone
         self.mic = mic

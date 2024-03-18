@@ -27,7 +27,7 @@ class Microphone:
 
         # Get logger
         self.logger = get_logger()
-        self.logger.debug("Configurating Microphone")
+        self.logger.debug("Configuring Microphone")
 
         # Configuration
         self.format = pyaudio.paInt16
