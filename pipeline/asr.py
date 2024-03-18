@@ -126,6 +126,12 @@ class ASRModel:
 
 
 class VoskModel(ASRModel):
+    """
+    Speech-to-text model based on Vosk library
+    https://alphacephei.com/vosk/
+    ---
+    """
+
     def load_model(self):
         self.logger.debug("Loading ASR model")
         self.model = vosk.Model(self.model_path)
@@ -154,7 +160,7 @@ class VoskModel(ASRModel):
                 transcription_result = json.loads(transcription_result).get("text", "")
 
                 # Return
-                self.logger.debug(f"Speech detected: {transcription_result}")
+                self.logger.info(f"Speech detected: {transcription_result}")
                 return transcription_result
 
 

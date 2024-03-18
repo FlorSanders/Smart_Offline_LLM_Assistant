@@ -19,3 +19,12 @@ The wakeword algorithm in this project is powered by [openWakeWord](https://gith
 - `wakeword_threshold`: Confidence level required for wakeword detection.
 - `wakeword_sound`: Path to wakeword detection chime sound `.wav` file.
   - NOTE: A collection of notification sounds is availables in the [assets/sounds](./assets/sounds/) directory.
+
+## Automatic Speech Recognition
+
+This project aims to support multiple ASR engines.  
+Their configuration options are listed below.
+
+- `asr_model`: Name of the ASR model (supported values listed at the end of [asr.py](./pipeline/asr.py)).
+- `asr_model_dir`: ASR model weights directory.
+- `asr_download_model`: Automatically download model weights to `asr_model_dir`.
