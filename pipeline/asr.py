@@ -1,7 +1,9 @@
 import os
 import json
 import vosk
+import stt
 import zipfile
+import time
 from urllib.request import urlretrieve
 from .utils import get_logger
 from .microphone import Microphone
@@ -79,7 +81,7 @@ class ASRModel:
         # Load model
         self.load_model()
 
-    def download_model(self):
+    def download_model(self, url=None):
         """
         Download ASR model weights
         ---
@@ -94,7 +96,7 @@ class ASRModel:
         os.makedirs(self.model_dir, exist_ok=True)
 
         # Get model url
-        model_url = self.model_config["url"]
+        model_url = self.model_config["url"] if url is None else url
         file_name = model_url.split("/")[-1]
 
         # Download file
@@ -166,11 +168,70 @@ class VoskModel(ASRModel):
                 return transcription_result
 
 
+class CoquiModel(ASRModel):
+    """
+    Speech-to-text model based on CoquiSTT (formerly DeepSpeech) library
+    https://stt.readthedocs.io/en/latest/index.html
+    ---
+    """
+
+    def download_model(self, url=None):
+        # Download scorer
+        super().download_model(url=self.model_config["scorer_url"])
+        # Download model
+        super().download_model(url=url)
+
+    def load_model(self):
+        # Load model
+        self.logger.debug("Loading ASR model")
+        self.model = stt.Model(self.model_path)
+        self.logger.debug("Loading ASR scorer")
+        self.model.enableExternalScorer(
+            os.path.join(self.model_dir, self.model_config["scorer_path"])
+        )
+
+    def transcribe(self):
+        # Make sure microphone is open
+        if not self.mic.is_open:
+            self.logger.debug("Opening microphone.")
+            self.mic.open()
+
+        # Open stream
+        stream_context = self.model.createStream()
+
+        # Transcribe audio
+        counter = 0
+        result = ""
+        while not (counter > 5 and result != ""):
+            data = self.mic.read_chunk()
+            stream_context.feedAudioContent(data)
+            tmp_result = stream_context.intermediateDecode()
+
+            # Determine stopping point
+            if result != tmp_result:
+                result = tmp_result
+                counter = 0
+            else:
+                counter += 1
+
+        # Gather final result
+        result = stream_context.finishStream()
+
+        return result
+
+
 # Supported models
 models = {
     "vosk": {
         "class": VoskModel,
         "url": "https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip",
         "path": "vosk-model-small-en-us-0.15",
-    }
+    },
+    "coqui": {
+        "class": CoquiModel,
+        "url": r"https://github.com/coqui-ai/STT-models/releases/download/english%2Fcoqui%2Fv1.0.0-large-vocab/model.tflite",
+        "path": "model.tflite",
+        "scorer_url": r"https://github.com/coqui-ai/STT-models/releases/download/english%2Fcoqui%2Fv1.0.0-large-vocab/large_vocabulary.scorer",
+        "scorer_path": "large_vocabulary.scorer",
+    },
 }

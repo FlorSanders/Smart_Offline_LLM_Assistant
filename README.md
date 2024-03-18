@@ -48,6 +48,7 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
 2. Wakeword Detection with [openWakeWord](https://github.com/dscripka/openWakeWord)
 3. Automatic Speech Recognition / Speech-to-Text with:
    - [Vosk](https://alphacephei.com/vosk/install)
+   - [Coqui STT](https://github.com/coqui-ai/STT) (Formerly [Mozilla DeepSpeech](https://github.com/mozilla/DeepSpeech))
 4. Large Language Models, based on:
    - [OpenAI GPT](https://openai.com/gpt-4)
 5. Speech Synthesis / Text-to-Speech with:
@@ -60,7 +61,7 @@ This repository is a work in progress, some things that remain to be done are:
 - [ ] Automatic Speech Recognition Model, integrate multiple models:
   - [ ] [Distill Whisper Small](https://huggingface.co/distil-whisper/distil-small.en)
   - [ ] [Quartznet](https://catalog.ngc.nvidia.com/orgs/nvidia/models/quartznet15x5) -> [Jetson Voice Package](https://github.com/dusty-nv/jetson-voice?tab=readme-ov-file#automatic-speech-recognition-asr)
-  - [ ] [Mozilla Deepspeech](https://deepspeech.readthedocs.io/en/r0.9/index.html)
+  - [x] [Mozilla Deepspeech](https://deepspeech.readthedocs.io/en/r0.9/index.html)
   - [x] [Vosk](https://alphacephei.com/vosk/install)
 - [ ] Speech to Text Model, Integrate multiple models:
   - [x] [Piper](https://github.com/rhasspy/piper)
@@ -68,6 +69,8 @@ This repository is a work in progress, some things that remain to be done are:
   - [ ] [EfficientSpeech](https://github.com/roatienza/efficientspeech)
 - [ ] Speaker Identification Model
 - [ ] LLM Integration
+  - [x] OpenAI ChatGPT
+  - [ ] Local Webserver model (TinyLLama / Gemma)
 - [ ] LLM Tool Learning
 - [ ] Tool Access Integration
 
