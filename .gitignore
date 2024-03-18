@@ -186,6 +186,7 @@ cython_debug/
 *.wav
 
 # Model files (include specific models with gitinclude)
+models/**/*
 *.weights
 *.pt
 *.pb

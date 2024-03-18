@@ -6,6 +6,7 @@ from pipeline.utils import get_config, get_logger
 from pipeline.microphone import Microphone
 from pipeline.wakeword import Wakeword
 from pipeline.audio import play_wave_file
+from pipeline.asr import ASR
 
 
 def main(config_path: str = "./config.json", log_level: str = "INFO"):
@@ -24,6 +25,9 @@ def main(config_path: str = "./config.json", log_level: str = "INFO"):
     # Initialize wakeword
     wakeword = Wakeword(config, mic)
 
+    # Initalize asr
+    asr = ASR(config, mic)
+
     # Detect wakeword
     while True:
         # Detect wakeword
@@ -37,6 +41,9 @@ def main(config_path: str = "./config.json", log_level: str = "INFO"):
         # Play wakeword chime
         logger.debug("Playing wakeword chime")
         play_wave_file(config["wakeword_sound"])
+
+        # Transcribe audio
+        transcription = asr.transcribe()
 
         # Sleep some time
         time.sleep(0.1)

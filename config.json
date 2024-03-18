@@ -3,8 +3,11 @@
     "mic_rate": 16000,
     "mic_from_file": false,
     "mic_file_path": "./microphone.wav",
-    "wakeword_download_model": true,
     "wakeword_model_path": "./models/wakeword/hey_jarvis_v0.1.tflite",
+    "wakeword_download_model": true,
     "wakeword_threshold": 0.99,
-    "wakeword_sound": "./assets/sounds/Whistleronic.wav"
+    "wakeword_sound": "./assets/sounds/Whistleronic.wav",
+    "asr_model": "vosk",
+    "asr_model_dir": "./models/asr/",
+    "asr_download_model": true
 }
