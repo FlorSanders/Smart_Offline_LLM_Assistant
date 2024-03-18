@@ -11,11 +11,6 @@ def main(
 ):
     """
     Record audio from microphone and save it to a file
-    ---
-    Args:
-    - duration (default = 5): Duration of recording in seconds
-    - config_path (default = "./config.json"): Configuration file path
-    - log_level (default = "DEBUG"): Logger level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
     """
 
     # Initialize program

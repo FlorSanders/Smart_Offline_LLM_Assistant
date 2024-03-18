@@ -10,11 +10,7 @@ from pipeline.audio import play_wave_file
 
 def main(config_path: str = "./config.json", log_level: str = "INFO"):
     """
-    Local-First LLM Voice Assistant - Main Script
-    ---
-    Args:
-    - config_path (default = "./config.json"): Configuration file path
-    - log_level (default = "INFO"): Logger level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+    Local-First LLM Voice Assistant
     """
 
     # Initialize program
