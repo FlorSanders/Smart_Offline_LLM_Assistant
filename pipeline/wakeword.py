@@ -39,7 +39,8 @@ class Wakeword:
 
         # Initialize model
         self.model = Model(
-            wakeword_models=[self.model_path], inference_framework=self.framework
+            wakeword_models=[self.model_path],
+            inference_framework=self.framework,
         )
 
     def detect(self):

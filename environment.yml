@@ -6,8 +6,9 @@ dependencies:
   - python==3.9.18
   - typer
   - pyaudio
+  - openai
+  - python-dotenv
   - pip:
-      - certifi==2024.2.2
       - cffi==1.16.0
       - charset-normalizer==3.3.2
       - coloredlogs==15.0.1
@@ -16,7 +17,6 @@ dependencies:
       - idna==3.6
       - joblib==1.3.2
       - mpmath==1.3.0
-      - numpy==1.26.4
       - onnxruntime==1.17.1
       - openwakeword==0.6.0
       - packaging==24.0

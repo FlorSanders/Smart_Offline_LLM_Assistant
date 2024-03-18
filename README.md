@@ -14,6 +14,12 @@ If changes are made, the environment can be exported using the provided script.
 bash export-environment.sh
 ```
 
+In case you plan to use [OpenAI](https://openai.com/) GPT models as your LLM backend, you have to create a `.env` file with your [API key](https://platform.openai.com/api-keys).
+
+```bash
+OPENAI_API_KEY=YOUR-KEY
+```
+
 ## Usage
 
 The voice assistant lives in the main script.  

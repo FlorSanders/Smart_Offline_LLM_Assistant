@@ -8,7 +8,7 @@ from pipeline.wakeword import Wakeword
 from pipeline.audio import play_wave_file
 
 
-def main(config_path: str = "./config.json", log_level: str = "INFO"):
+def main(config_path: str = "./config.json", log_level: str = "DEBUG"):
     """
     Wakeword detection test script
     """

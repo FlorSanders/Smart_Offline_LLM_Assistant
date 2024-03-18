@@ -6,6 +6,8 @@ from urllib.request import urlretrieve
 from .utils import get_logger
 from .microphone import Microphone
 
+vosk.SetLogLevel(-1)
+
 
 class ASR:
     """
@@ -134,7 +136,7 @@ class VoskModel(ASRModel):
 
     def load_model(self):
         self.logger.debug("Loading ASR model")
-        self.model = vosk.Model(self.model_path)
+        self.model = vosk.Model(model_path=self.model_path)
         self.recognizer = vosk.KaldiRecognizer(self.model, self.mic_rate)
 
     def transcribe(self):

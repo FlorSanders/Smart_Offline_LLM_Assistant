@@ -29,6 +29,7 @@ class TTS:
         self.model = self.model_config["class"](config)
 
     def speak(self, text):
+        self.logger.debug(f"Speaking text: {text}")
         self.model.speak(text)
 
 

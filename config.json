@@ -10,9 +10,12 @@
     "asr_model": "vosk",
     "asr_model_dir": "./models/asr/",
     "asr_download_model": true,
+    "llm_model": "gpt-3.5-turbo",
+    "llm_system_message": "You are Jarvis, a helpful AI voice assistant. Keep responses short.",
     "tts_model": "piper",
     "tts_model_dir": "./models/tts/",
     "tts_download_model": true,
-    "tts_voice": "ryan",
-    "tts_file": "./tts.wav"
+    "tts_voice": "amy",
+    "tts_file": "./tts.wav",
+    "tts_done_sound": "assets/sounds/Whistleronic-Down.wav"
 }

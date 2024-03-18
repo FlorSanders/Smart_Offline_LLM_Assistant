@@ -1,7 +1,7 @@
 import typer
+from pipeline.asr import ASR  # ASR first (bug fix)
 from pipeline.utils import get_config, get_logger
 from pipeline.microphone import Microphone
-from pipeline.asr import ASR
 
 
 def main(
@@ -9,7 +9,7 @@ def main(
     log_level: str = "DEBUG",
 ):
     """
-    Record audio from microphone and save it to a file
+    Audio transcription test script
     """
 
     # Initialize program
