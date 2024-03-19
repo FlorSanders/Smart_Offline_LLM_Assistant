@@ -54,6 +54,15 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
 5. Speech Synthesis / Text-to-Speech with:
    - [Piper](https://github.com/rhasspy/piper)
 
+### Run Tests
+
+A number of test scripts are available to verify the working of the individual components in the pipeline.  
+Run a test by calling the test script from the main directory.
+
+```bash
+python test_[something].py
+```
+
 ## TODO
 
 This repository is a work in progress, some things that remain to be done are:
