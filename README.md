@@ -60,7 +60,7 @@ A number of test scripts are available to verify the working of the individual c
 Run a test by calling the test script from the main directory.
 
 ```bash
-python test_[something].py
+python tests/test_[something].py
 ```
 
 ## TODO
