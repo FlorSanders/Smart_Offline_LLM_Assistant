@@ -1,4 +1,5 @@
 import pyaudio
+import audioop
 import wave
 import numpy as np
 from .utils import get_logger
@@ -34,6 +35,8 @@ class Microphone:
         self.channels = 1
         self.chunk = config.get("mic_chunk", 1280)
         self.rate = config.get("mic_rate", 16000)
+        self.volume_threshold = config.get("mic_volume_threshold", 0.25)
+        self.silence_cutoff_length = config.get("mic_silence_cutoff_length", 10)
         self.from_file = config.get("mic_from_file", False)
         self.file_path = config.get("mic_file_path", "")
 
@@ -131,3 +134,78 @@ class Microphone:
         if self.audio:
             self.audio.terminate()
             self.audio = None
+
+    def listen_until_silence(
+        self,
+        volume_threshold=None,
+        silence_cutoff_length=None,
+        verbose=False,
+    ):
+        # Parse arguments
+        if volume_threshold is None:
+            volume_threshold = self.volume_threshold
+        if silence_cutoff_length is None:
+            silence_cutoff_length = self.silence_cutoff_length
+
+        # Make sure mic is open
+        if not self.is_open:
+            self.open()
+
+        # Wait for silence
+        while True:
+            data = self.read_chunk()
+            volume = audioop.rms(data, 2) / len(data)
+            if verbose:
+                self.logger.debug(f"Volume = {volume}")
+            if volume < volume_threshold:
+                self.logger.debug("Silence detected")
+                break
+
+        # Wait for start of speech
+        while True:
+            data = self.read_chunk()
+            if len(data) == 0:
+                self.logger.warning("Audio ended before speech was detected")
+                break
+            volume = audioop.rms(data, 2) / len(data)
+            if verbose:
+                self.logger.debug(f"Volume = {volume}")
+            if volume > volume_threshold:
+                self.logger.debug("Speech start detected")
+                break
+
+        # Listen until silence
+        audio = []
+        silence_counter = 0
+        while True:
+            # Save last audio chunk
+            audio.extend(data)
+
+            # Get audio chunk
+            data = self.read_chunk()
+            if len(data) == 0:
+                break
+
+            # Check volume
+            volume = audioop.rms(data, 2) / len(data)
+            if verbose:
+                self.logger.debug(f"Volume = {volume}")
+            if volume < volume_threshold:
+                silence_counter += 1
+            else:
+                silence_counter = 0
+
+            # Stop if silence is detected
+            if silence_counter >= silence_cutoff_length:
+                self.logger.debug("Speech end detected")
+                break
+
+        # Close mic
+        # self.close()
+
+        audio = np.asarray(audio, dtype=np.int16)
+        self.logger.debug(f"Audio length = {len(audio)}, {len(audio) / self.rate}")
+        return audio
+
+
+# TODO: Listen until silence function - https://github.com/suda/open-home/blob/master/Python/listen/listen.py
