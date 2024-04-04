@@ -81,6 +81,7 @@ class Wakeword:
             if wakeword_detected and not self.last_detected:
                 self.logger.info("Wakeword detected!")
                 self.last_detected = True
+                # self.mic.close()
                 return True
 
             # Update last detection
