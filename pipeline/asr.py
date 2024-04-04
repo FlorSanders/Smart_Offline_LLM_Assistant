@@ -1,9 +1,11 @@
+import whisper
 import os
 import json
 import vosk
 import stt
 import zipfile
 import time
+import numpy as np
 from urllib.request import urlretrieve
 from .utils import get_logger
 from .microphone import Microphone
@@ -43,6 +45,7 @@ class ASR:
         """
         self.logger.debug("Transcribing audio")
         transcription = self.model.transcribe()
+        self.logger.debug(transcription)
         return transcription
 
 
@@ -71,7 +74,7 @@ class ASRModel:
         # Configuration
         self.model_config = models[config["asr_model"]]
         self.mic_rate = config.get("mic_rate")
-        self.model_dir = config.get("asr_model_dir")
+        self.model_dir = os.path.join(config.get("asr_model_dir"), config["asr_model"])
         self.model_path = os.path.join(self.model_dir, self.model_config["path"])
 
         # Donwload model
@@ -191,33 +194,37 @@ class CoquiModel(ASRModel):
         )
 
     def transcribe(self):
-        # Make sure microphone is open
-        if not self.mic.is_open:
-            self.logger.debug("Opening microphone.")
-            self.mic.open()
+        # Get audio
+        self.logger.debug("Gathering audio.")
+        audio = self.mic.listen_until_silence()
 
-        # Open stream
+        # Perform transcription
+        self.logger.debug("Transcribing.")
         stream_context = self.model.createStream()
-
-        # Transcribe audio
-        counter = 0
-        result = ""
-        while not (counter > 10 and result != ""):
-            data = self.mic.read_chunk()
-            stream_context.feedAudioContent(data)
-            tmp_result = stream_context.intermediateDecode()
-
-            # Determine stopping point
-            if result != tmp_result:
-                result = tmp_result
-                counter = 0
-            else:
-                counter += 1
-
-        # Gather final result
+        stream_context.feedAudioContent(audio)
         result = stream_context.finishStream()
 
         return result
+
+
+class WhisperModel(ASRModel):
+    def load_model(self):
+        # Load model
+        self.logger.debug("Loading ASR model")
+        self.model = whisper.load_model(self.model_path)
+
+    def transcribe(self):
+        # Get audio
+        self.logger.debug("Gathering audio.")
+        audio = self.mic.listen_until_silence()
+        audio = audio.astype(np.float32) / 32768.0
+
+        # Perform transcription
+        self.logger.debug("Transcribing.")
+        result = self.model.transcribe(audio)
+
+        # Return transcription
+        return result.get("text", "")
 
 
 # Supported models
@@ -233,5 +240,10 @@ models = {
         "path": "model.tflite",
         "scorer_url": r"https://github.com/coqui-ai/STT-models/releases/download/english%2Fcoqui%2Fv1.0.0-large-vocab/large_vocabulary.scorer",
         "scorer_path": "large_vocabulary.scorer",
+    },
+    "whisper": {
+        "class": WhisperModel,
+        "url": r"https://openaipublic.azureedge.net/main/whisper/models/d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03/tiny.en.pt",
+        "path": "tiny.en.pt",
     },
 }

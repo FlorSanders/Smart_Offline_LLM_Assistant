@@ -38,7 +38,7 @@ def run_pipeline(config_path, log_level):
     tts = TTS(config)
 
     # Run pipeline
-    logger.debug("Running Assistant Pipeline")
+    logger.info("Running Assistant Pipeline")
     while True:
         # Detect wakeword
         wakeword_detected = wakeword.detect()
@@ -56,6 +56,12 @@ def run_pipeline(config_path, log_level):
         # Transcribe audio
         prompt = asr.transcribe()
 
+        # Play done listening chime
+        if os.path.exists(config["tts_done_sound"]):
+            logger.debug("Playing TTS done chime")
+            play_wave_file(config["tts_done_sound"])
+            time.sleep(0.1)
+
         # Process prompt
         if config["llm_skip"]:
             response = prompt
@@ -68,7 +74,3 @@ def run_pipeline(config_path, log_level):
         # Play TTS done chime
         logger.debug("Sleeping...")
         time.sleep(0.25)
-        if os.path.exists(config["tts_done_sound"]):
-            logger.debug("Playing TTS done chime")
-            play_wave_file(config["tts_done_sound"])
-            time.sleep(0.1)
