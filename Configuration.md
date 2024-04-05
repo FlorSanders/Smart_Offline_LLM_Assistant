@@ -46,9 +46,10 @@ This project aims to support multiple TTS engines.
 Their configuration options are listed below.
 
 - `tts_model`: Name of the TTS model (support values: `piper`, `coqui`).
-- `tts_model_dir`: TTS model weihgts directory.
-- `tts_download_model`: Automatically download model weights to `tts_model_dir`.
 - `tts_voice`: Which voice to use for synthesis.
   - `piper`: `amy`, `danny`, `kathleen`, `lessac`, `ryan`
   - `coqui`: `tts_models/eng/fairseq/vits` (with [bug fix](https://github.com/eginhard/coqui-tts/pull/11/files/b064a57b2b97f019b5d5ccac8456169654e35641)), `tts_models/en/ljspeech/speedy-speech`, `tts_models/en/ljspeech/glow-tts`
+  - `mimic3`: `en_US/cmu-arctic_low`, `en_US/hifi-tts_low`, `en_US/ljspeech_low`, `en_US/m-ailabs_low`, `en_US/vctk_low`, `en_UK/apope_low`
+- `tts_model_dir`: TTS model weihgts directory.
+- `tts_download_model`: Automatically download model weights to `tts_model_dir`.
 - `tts_file`: Temporary wav file to store the synthesized audio in.

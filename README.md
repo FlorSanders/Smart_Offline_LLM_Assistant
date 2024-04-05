@@ -14,11 +14,17 @@ If changes are made, the environment can be exported using the provided script.
 bash export-environment.sh
 ```
 
+### OpenAI
+
 To use [OpenAI](https://openai.com/) GPT models as your LLM backend, you have to create a `.env` file with your [API key](https://platform.openai.com/api-keys).
 
 ```bash
 OPENAI_API_KEY=YOUR-KEY
 ```
+
+### Mimic3
+
+To use [MycroftAI/mimic3](https://github.com/MycroftAI/mimic3/), some additional packages should be installed. Follow their [quick start guide](https://github.com/MycroftAI/mimic3/?tab=readme-ov-file#mycroft-tts-plugin).
 
 ## Usage
 

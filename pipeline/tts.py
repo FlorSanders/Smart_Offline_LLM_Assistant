@@ -4,6 +4,7 @@ from urllib.request import urlretrieve
 from piper.voice import PiperVoice
 import torch
 from TTS.api import TTS as CoquiTTS
+from mycroft_plugin_tts_mimic3 import Mimic3TTSPlugin
 from .utils import get_logger
 from .audio import play_wave_file
 
@@ -33,6 +34,10 @@ class TTS:
         self.model = self.model_config["class"](config)
 
     def speak(self, text):
+        text = text.strip()
+        if len(text) == 0:
+            self.logger.warning("Empty text, skipping tts")
+            return
         self.logger.debug(f"Speaking text: {text}")
         self.model.speak(text)
 
@@ -55,6 +60,7 @@ class TTSModel:
         self.logger = get_logger()
 
         # Configuration
+        self.config = config
         self.model_dir = config.get("tts_model_dir")
         self.voice = config.get("tts_voice")
         self.file = config.get("tts_file")
@@ -163,6 +169,33 @@ class CoquiModel(TTSModel):
         self.speak_file()
 
 
+class Mimic3TTS(TTSModel):
+    """
+    Text-to-speech model based on Mycroft/Mimic3
+    https://github.com/MycroftAI/mimic3
+    """
+
+    def download_model(self):
+        pass
+
+    def load_model(self):
+        self.logger.debug(f"Loading TTS model")
+        # Model configuration
+        voices_dir = os.path.join(self.model_dir, self.model_config["path"])
+        model_config = {
+            "voice": self.voice,
+            "voices_directories": [voices_dir],
+            "voices_download_dir": voices_dir,
+            "no_download": not self.config.get("tts_download_model", False),
+        }
+        # (Down)Load model
+        self.model = Mimic3TTSPlugin("en", model_config)
+
+    def speak(self, text):
+        self.model.get_tts(text, self.file)
+        self.speak_file()
+
+
 models = {
     "piper": {
         "class": PiperModel,
@@ -173,5 +206,10 @@ models = {
         "class": CoquiModel,
         "path": "coqui",
         "url": None,
-    },  # Supported models: https://docs.coqui.ai/en/latest/
+    },  # Supported voices: https://docs.coqui.ai/en/latest/
+    "mimic3": {
+        "class": Mimic3TTS,
+        "path": "mimic3",
+        "url": None,
+    },  # Supported voices: https://github.com/MycroftAI/mimic3-voices
 }
