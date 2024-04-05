@@ -1,6 +1,6 @@
 # Local-First LLM Voice Assistant with Tool Access
 
-## Setup
+## 🛠️ Setup
 
 In order to install the dependencies, initiate a conda environment from the `environment.yml` file.
 
@@ -36,7 +36,7 @@ To get up and running with LLamaEdge, follow the instructions in their [quicksta
 
 To use [MycroftAI/mimic3](https://github.com/MycroftAI/mimic3/), some additional packages should be installed. Follow their [quick start guide](https://github.com/MycroftAI/mimic3/?tab=readme-ov-file#mycroft-tts-plugin).
 
-## Usage
+## 🔥 Quick Start
 
 The voice assistant lives in the main script.  
 It can be started using a CLI interface.
@@ -56,7 +56,7 @@ It can be started using a CLI interface.
 The voice assistant can be configured by editing the `config.json` file.  
 Check out the [Configuration Guide](./Configuration.md) for more details.
 
-## Architecture
+## 🏛️ Architecture
 
 The pipeline that powers the voice assistant stands on the shoulders of giants:
 
@@ -70,7 +70,7 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
 5. Speech Synthesis / Text-to-Speech with:
    - [Piper](https://github.com/rhasspy/piper)
 
-### Run Tests
+### 🔍 Run Tests
 
 A number of test scripts are available to verify the working of the individual components in the pipeline.  
 Run a test by calling the test script from the main directory.
@@ -79,7 +79,7 @@ Run a test by calling the test script from the main directory.
 python tests/test_[something].py
 ```
 
-## TODO
+## ✅ TODO
 
 Keep track of the progress of this project below:
 
@@ -93,7 +93,7 @@ Keep track of the progress of this project below:
 - [ ] LLM Tool Learning
 - [ ] Tool Access Integration
 
-## Similar Projects
+## ℹ️ Similar Projects
 
 This project is supposed to be a proof-of-concept.  
 There are a lot of interesting projects out there that are developed to a more mature point.  
