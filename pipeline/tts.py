@@ -2,8 +2,12 @@ import os
 import wave
 from urllib.request import urlretrieve
 from piper.voice import PiperVoice
+import torch
+from TTS.api import TTS as CoquiTTS
 from .utils import get_logger
 from .audio import play_wave_file
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 class TTS:
@@ -94,6 +98,18 @@ class TTSModel:
 
         raise NotImplementedError("speak() is not implemented in the base class")
 
+    def speak_file(self):
+        """
+        Play audio saved in file and remove file
+        ---
+        """
+        if not os.path.exists(self.file):
+            self.logger.error(f"File not found: {self.file}")
+            return
+
+        play_wave_file(self.file)
+        os.remove(self.file)
+
 
 class PiperModel(TTSModel):
     def download_model(self):
@@ -122,8 +138,29 @@ class PiperModel(TTSModel):
     def speak(self, text):
         with wave.open(self.file, "wb") as wav_file:
             self.model.synthesize(text, wav_file)
-        play_wave_file(self.file)
-        os.remove(self.file)
+        self.speak_file()
+
+
+class CoquiModel(TTSModel):
+    """
+    Text-to-speech model based on CoquiTTS
+    https://docs.coqui.ai/en/latest/index.html
+    ---
+    """
+
+    def download_model(self):
+        pass
+
+    def load_model(self):
+        self.logger.debug(f"Loading TTS model (device={device})")
+        # Set models directory using environment variable
+        os.environ["TTS_HOME"] = os.path.join(self.model_dir, self.model_config["path"])
+        # (Down)Load model
+        self.model = CoquiTTS(self.voice).to(device)
+
+    def speak(self, text):
+        self.model.tts_to_file(text=text, file_path=self.file)
+        self.speak_file()
 
 
 models = {
@@ -131,5 +168,10 @@ models = {
         "class": PiperModel,
         "path": "piper",
         "url": lambda voice: f"https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/{voice}/low/en_US-{voice}-low.onnx",
-    }  # Supported voices: https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US (only low variants!)
+    },  # Supported voices: https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US (only low variants!)
+    "coqui": {
+        "class": CoquiModel,
+        "path": "coqui",
+        "url": None,
+    },  # Supported models: https://docs.coqui.ai/en/latest/
 }

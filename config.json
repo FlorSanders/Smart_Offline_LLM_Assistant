@@ -12,13 +12,13 @@
   "asr_model": "whisper",
   "asr_model_dir": "./models/asr/",
   "asr_download_model": true,
+  "asr_done_sound": "assets/sounds/Whistleronic-Down.wav",
   "llm_skip": true,
   "llm_model": "gpt-3.5-turbo",
   "llm_system_message": "You are Jarvis, a helpful AI voice assistant. Keep responses short.",
-  "tts_model": "piper",
+  "tts_model": "coqui",
   "tts_model_dir": "./models/tts/",
   "tts_download_model": true,
-  "tts_voice": "kathleen",
-  "tts_file": "./tts.wav",
-  "tts_done_sound": "assets/sounds/Whistleronic-Down.wav"
+  "tts_voice": "tts_models/eng/fairseq/vits",
+  "tts_file": "./tts.wav"
 }

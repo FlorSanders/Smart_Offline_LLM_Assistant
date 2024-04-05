@@ -65,17 +65,11 @@ python tests/test_[something].py
 
 ## TODO
 
-This repository is a work in progress, some things that remain to be done are:
+Keep track of the progress of this project below:
 
-- [ ] Automatic Speech Recognition Model, integrate multiple models:
-  - [ ] [Distill Whisper Small](https://huggingface.co/distil-whisper/distil-small.en)
-  - [ ] [Quartznet](https://catalog.ngc.nvidia.com/orgs/nvidia/models/quartznet15x5) -> [Jetson Voice Package](https://github.com/dusty-nv/jetson-voice?tab=readme-ov-file#automatic-speech-recognition-asr)
-  - [x] [Mozilla Deepspeech](https://deepspeech.readthedocs.io/en/r0.9/index.html)
-  - [x] [Vosk](https://alphacephei.com/vosk/install)
-- [ ] Speech to Text Model, Integrate multiple models:
-  - [x] [Piper](https://github.com/rhasspy/piper)
-  - [ ] [Microsoft Lightspeech](https://github.com/microsoft/NeuralSpeech/tree/master/LightSpeech)
-  - [ ] [EfficientSpeech](https://github.com/roatienza/efficientspeech)
+- [x] Wakeword Algorithm
+- [x] Automatic Speech Recognition Model, integrate multiple models:
+- [x] Speech to Text Model, Integrate multiple models:
 - [ ] Speaker Identification Model
 - [ ] LLM Integration
   - [x] OpenAI ChatGPT
@@ -91,5 +85,6 @@ Go check them out!
 
 - [Leon](https://github.com/leon-ai/leon)
 - [Mycroft](https://github.com/MycroftAI/mycroft-core)
+- [SpeechBrain](https://github.com/speechbrain/speechbrain)
 - [rhasspy3](https://github.com/rhasspy/rhasspy3/)
 - [and more...](https://github.com/topics/voice-assistants)

@@ -57,9 +57,9 @@ def run_pipeline(config_path, log_level):
         prompt = asr.transcribe()
 
         # Play done listening chime
-        if os.path.exists(config["tts_done_sound"]):
+        if os.path.exists(config["asr_done_sound"]):
             logger.debug("Playing TTS done chime")
-            play_wave_file(config["tts_done_sound"])
+            play_wave_file(config["asr_done_sound"])
             time.sleep(0.1)
 
         # Process prompt

@@ -25,9 +25,11 @@ The wakeword algorithm in this project is powered by [openWakeWord](https://gith
 This project aims to support multiple ASR engines.  
 Their configuration options are listed below.
 
-- `asr_model`: Name of the ASR model (supported values listed at the end of [asr.py](./pipeline/asr.py)).
+- `asr_model`: Name of the ASR model (supported values: `vosk`, `coqui`, `whisper`).
 - `asr_model_dir`: ASR model weights directory.
 - `asr_download_model`: Automatically download model weights to `asr_model_dir`.
+- `asr_done_sound`: Path to end of ASR chime sound `.wav` file.
+  - NOTE: A collection of notification sounds is availables in the [assets/sounds](./assets/sounds/) directory.
 
 ## Large Language Model
 
@@ -35,18 +37,18 @@ This project aims to support interfacing with multiple LLMs.
 Their configuration options are listed below:
 
 - `llm_skip`: Whether to skip the LLM altogether (used for testing).
-- `llm_model`: Name of the LLM model (supported values listed at the end of [llm.py](./pipeline/llm.py))
-- `llm_system_message`: System message to send to the LLM.
+- `llm_model`: Name of the LLM model (supported values: `gpt-3.5-turbo`, `gpt-4`)
+- `llm_system_message`: System message sent to the LLM.
 
 ## Text-to-Speech
 
 This project aims to support multiple TTS engines.  
 Their configuration options are listed below.
 
-- `tts_model`: Name of the TTS model (support values listed at the end of [tts.py](./pipeline/tts.py)).
+- `tts_model`: Name of the TTS model (support values: `piper`, `coqui`).
 - `tts_model_dir`: TTS model weihgts directory.
 - `tts_download_model`: Automatically download model weights to `tts_model_dir`.
-- `tts_voice`: Which voice to use for synthesis (if model has multiple options).
+- `tts_voice`: Which voice to use for synthesis.
+  - `piper`: `amy`, `danny`, `kathleen`, `lessac`, `ryan`
+  - `coqui`: `tts_models/eng/fairseq/vits` (with [bug fix](https://github.com/eginhard/coqui-tts/pull/11/files/b064a57b2b97f019b5d5ccac8456169654e35641)), `tts_models/en/ljspeech/speedy-speech`, `tts_models/en/ljspeech/glow-tts`
 - `tts_file`: Temporary wav file to store the synthesized audio in.
-- `tts_done_sound`: Path to end of TTS chime sound `.wav` file.
-  - NOTE: A collection of notification sounds is availables in the [assets/sounds](./assets/sounds/) directory.
