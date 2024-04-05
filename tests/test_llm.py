@@ -30,8 +30,9 @@ def main(
     llm = LLM(config)
 
     # LLM processing
-    prompt = "what is the weather today?"
+    prompt = "What can you do?"
     response = llm(prompt)
+    print(response)
 
 
 if __name__ == "__main__":

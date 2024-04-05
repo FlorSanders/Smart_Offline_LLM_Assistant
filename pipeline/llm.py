@@ -1,4 +1,5 @@
 import openai
+import requests
 from dotenv import load_dotenv
 from .utils import get_logger
 import os
@@ -16,8 +17,10 @@ class LLM:
         self.logger.debug("Configuring LLM")
 
         # Config
-        self.model_config = models[config.get("llm_model")]
-        self.model = self.model_config["class"](config)
+        self.provider = config.get("llm_provider")
+
+        # Initialize model
+        self.model = providers[self.provider]["class"](config)
 
     def __call__(self, prompt):
         self.logger.debug(f"Prompting LLM: {prompt}")
@@ -34,8 +37,8 @@ class LLMModel:
 
         # Config
         self.config = config
+        self.base_url = config.get("llm_provider_url")
         self.model_name = config.get("llm_model")
-        self.model_config = models[self.model_name]
         self.system_message = config.get("llm_system_message")
 
     def __call__(self, prompt):
@@ -48,7 +51,10 @@ class OpenAIModel(LLMModel):
 
         # Load OpenAI API key
         load_dotenv()
-        self.client = openai.Client(api_key=os.getenv("OPENAI_API_KEY"))
+        self.client = openai.Client(
+            api_key=os.getenv("OPENAI_API_KEY"),
+            base_url=self.base_url,
+        )
 
     def __call__(self, prompt):
         messages = [
@@ -59,16 +65,53 @@ class OpenAIModel(LLMModel):
         chat = self.client.chat.completions.create(
             model=self.model_name, messages=messages
         )
-        self.logger.debug(f"OpenAI API response {chat}")
-        response = chat.choices[0].message.content
-        return response
+        response_text = chat.choices[0].message.content
+        self.logger.debug(f"OpenAI API response: {response_text}")
+        return response_text
 
 
-models = {
-    "gpt-3.5-turbo": {
+class LlamaEdgeModel(LLMModel):
+    def __init__(self, config):
+        super().__init__(config)
+        # Default base url for LLamaEdge
+        if self.base_url is None:
+            self.base_url = "http://localhost:8080/v1"
+
+    def __call__(self, prompt):
+        # Construct messages
+        messages = [
+            {"role": "system", "content": self.system_message},
+            {"role": "user", "content": prompt},
+        ]
+
+        # Perform API call
+        self.logger.debug("Calling Llama Edge API")
+        response = requests.post(
+            f"{self.base_url}/chat/completions",
+            json={
+                "messages": messages,
+                "model": self.model_name,
+            },
+            headers={"Content-Type": "application/json"},
+        )
+
+        # Confirm response success
+        if response.status_code != 200:
+            raise Exception(f"Error calling API: {response.text}")
+
+        # Parse response
+        response_body = response.json()
+        response_text = response_body["choices"][0]["message"]["content"]
+        self.logger.debug(f"API response {response_text}")
+
+        return response_text
+
+
+providers = {
+    "openai": {
         "class": OpenAIModel,
     },
-    "gpt-4": {
-        "class": OpenAIModel,
+    "llama-edge": {
+        "class": LlamaEdgeModel,
     },
 }

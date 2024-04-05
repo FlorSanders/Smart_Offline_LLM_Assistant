@@ -36,16 +36,20 @@ Their configuration options are listed below.
 This project aims to support interfacing with multiple LLMs.
 Their configuration options are listed below:
 
-- `llm_skip`: Whether to skip the LLM altogether (used for testing).
-- `llm_model`: Name of the LLM model (supported values: `gpt-3.5-turbo`, `gpt-4`)
+- `llm_provider`: LLM Service Provider (supported values: `openai`, `llamaedge`)
+- `llm_provider_url`: To overwrite the `base_url` to which api calls should be made.
+- `llm_model`: Name of the LLM model
+  - `openai`: `gpt-3.5-turbo`, `gpt-4`
+  - `llamaedge`: self-hosted llama-based model ([options](https://github.com/LlamaEdge/LlamaEdge/blob/main/models.md), e.g. `TinyLlama-1.1B-Chat-v1.0`)
 - `llm_system_message`: System message sent to the LLM.
+- `llm_skip`: Whether to skip the LLM altogether (used for testing).
 
 ## Text-to-Speech
 
 This project aims to support multiple TTS engines.  
 Their configuration options are listed below.
 
-- `tts_model`: Name of the TTS model (support values: `piper`, `coqui`, `mimic3`).
+- `tts_model`: Name of the TTS model (supported values: `piper`, `coqui`, `mimic3`).
 - `tts_voice`: Which voice to use for synthesis.
   - `piper`: `amy`, `danny`, `kathleen`, `lessac`, `ryan`
   - `coqui`: `tts_models/eng/fairseq/vits` (with [bug fix](https://github.com/eginhard/coqui-tts/pull/11/files/b064a57b2b97f019b5d5ccac8456169654e35641)), `tts_models/en/ljspeech/speedy-speech`, `tts_models/en/ljspeech/glow-tts`
