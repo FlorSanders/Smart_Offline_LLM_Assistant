@@ -89,7 +89,7 @@ Keep track of the progress of this project below:
 - [x] Automatic Speech Recognition Model, integrate multiple models:
 - [x] Speech to Text Model, Integrate multiple models:
 - [ ] Speaker Identification Model
-- [ ] LLM Integration
+- [x] LLM Integration
   - [x] OpenAI ChatGPT
   - [x] Local Webserver model
 - [ ] LLM Tool Learning
