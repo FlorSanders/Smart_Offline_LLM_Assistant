@@ -45,7 +45,7 @@ Their configuration options are listed below:
 This project aims to support multiple TTS engines.  
 Their configuration options are listed below.
 
-- `tts_model`: Name of the TTS model (support values: `piper`, `coqui`).
+- `tts_model`: Name of the TTS model (support values: `piper`, `coqui`, `mimic3`).
 - `tts_voice`: Which voice to use for synthesis.
   - `piper`: `amy`, `danny`, `kathleen`, `lessac`, `ryan`
   - `coqui`: `tts_models/eng/fairseq/vits` (with [bug fix](https://github.com/eginhard/coqui-tts/pull/11/files/b064a57b2b97f019b5d5ccac8456169654e35641)), `tts_models/en/ljspeech/speedy-speech`, `tts_models/en/ljspeech/glow-tts`
