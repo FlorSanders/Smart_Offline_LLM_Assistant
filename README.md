@@ -1,4 +1,6 @@
-# Local-First LLM Voice Assistant with Tool Access
+# LLM Voice Assistant
+
+_Local-First LLM Voice Assistant with Tool Access_
 
 ## 🛠️ Setup
 
