@@ -45,12 +45,17 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
 1. CLI Tool built on [Typer](https://github.com/tiangolo/typer)
 2. Wakeword Detection with [openWakeWord](https://github.com/dscripka/openWakeWord)
 3. Automatic Speech Recognition / Speech-to-Text with:
+   - [OpenAI Whisper](https://openai.com/research/whisper)
    - [Vosk](https://alphacephei.com/vosk/install)
-   - [Coqui STT](https://github.com/coqui-ai/STT) (Formerly [Mozilla DeepSpeech](https://github.com/mozilla/DeepSpeech))
-4. Large Language Models, based on:
-   - [OpenAI GPT](https://openai.com/gpt-4)
-5. Speech Synthesis / Text-to-Speech with:
+   - [Coqui STT](https://stt.readthedocs.io/en/latest/) (Formerly [Mozilla DeepSpeech](https://github.com/mozilla/DeepSpeech))
+4. Large Language Model (LLM) integration with:
+   - [LlamaEdge](https://llamaedge.com/)
+   - [OpenAI GPT 3/4](https://openai.com/gpt-4)
+5. Large Language Model Tool Integration with [LangChain](https://www.langchain.com/)
+6. Speech Synthesis / Text-to-Speech with:
    - [Piper](https://github.com/rhasspy/piper)
+   - [Coqui TTS](https://docs.coqui.ai/en/dev/index.html) (Formerly [Mozilla TTS](https://github.com/mozilla/TTS))
+   - [MycroftAI/mimic3](https://github.com/MycroftAI/mimic3)
 
 ## ✅ TODO
 
