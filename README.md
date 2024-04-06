@@ -6,7 +6,8 @@
 ## About
 
 **SOLA** is a Smart Offline-first LLM Assistant.  
-By adopting an offline-first approach to data and model execution, privacy is guaranteed. Furthermore, its integration with LLM AI models and access to external (online) tools make it smart.
+By adopting an offline-first approach to data and model execution, privacy is guaranteed.  
+Still, its integration with LLM AI models and access to external (online) tools make it smart.
 
 ## 🔥 Quick Start
 
