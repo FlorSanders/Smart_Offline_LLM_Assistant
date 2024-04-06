@@ -186,7 +186,7 @@ cython_debug/
 *.wav
 
 # Model files (include specific models with gitinclude)
-models/**/*
+models/**
 *.weights
 *.pt
 *.pb
@@ -198,3 +198,5 @@ models/**/*
 *.h5
 *.keras
 *.krs
+!models/wakeword/
+!models/wakeword/hey_sola.*
