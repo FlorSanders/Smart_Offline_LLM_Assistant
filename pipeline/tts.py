@@ -1,7 +1,7 @@
 import os
 import wave
 from urllib.request import urlretrieve
-from piper.voice import PiperVoice
+#from piper.voice import PiperVoice
 import torch
 from TTS.api import TTS as CoquiTTS
 from mycroft_plugin_tts_mimic3 import Mimic3TTSPlugin
@@ -116,35 +116,35 @@ class TTSModel:
         play_wave_file(self.file)
         os.remove(self.file)
 
+# NOTE: [piper-phonemize](https://github.com/rhasspy/piper-phonemize) is not supported on Jetso Nano platform and build from code failed.
+# class PiperModel(TTSModel):
+#     def download_model(self):
+#         # Return if model exists
+#         if os.path.exists(self.model_path):
+#             self.logger.debug("Model already exists")
+#             return
 
-class PiperModel(TTSModel):
-    def download_model(self):
-        # Return if model exists
-        if os.path.exists(self.model_path):
-            self.logger.debug("Model already exists")
-            return
+#         # Construct url
+#         url_onnx = self.model_config["url"](self.voice)
+#         url_json = f"{url_onnx}.json"
 
-        # Construct url
-        url_onnx = self.model_config["url"](self.voice)
-        url_json = f"{url_onnx}.json"
+#         # Make sure model path exists
+#         os.makedirs(self.model_path)
 
-        # Make sure model path exists
-        os.makedirs(self.model_path)
+#         # Download model
+#         self.logger.info("Downloading TTS model...")
+#         urlretrieve(url_onnx, os.path.join(self.model_path, "model.onnx"))
+#         urlretrieve(url_json, os.path.join(self.model_path, "model.onnx.json"))
+#         self.logger.info("TTS model downloaded")
 
-        # Download model
-        self.logger.info("Downloading TTS model...")
-        urlretrieve(url_onnx, os.path.join(self.model_path, "model.onnx"))
-        urlretrieve(url_json, os.path.join(self.model_path, "model.onnx.json"))
-        self.logger.info("TTS model downloaded")
+#     def load_model(self):
+#         self.logger.debug("Loading TTS model")
+#         self.model = PiperVoice.load(os.path.join(self.model_path, "model.onnx"))
 
-    def load_model(self):
-        self.logger.debug("Loading TTS model")
-        self.model = PiperVoice.load(os.path.join(self.model_path, "model.onnx"))
-
-    def speak(self, text):
-        with wave.open(self.file, "wb") as wav_file:
-            self.model.synthesize(text, wav_file)
-        self.speak_file()
+#     def speak(self, text):
+#         with wave.open(self.file, "wb") as wav_file:
+#             self.model.synthesize(text, wav_file)
+#         self.speak_file()
 
 
 class CoquiModel(TTSModel):
@@ -197,11 +197,11 @@ class Mimic3TTS(TTSModel):
 
 
 models = {
-    "piper": {
-        "class": PiperModel,
-        "path": "piper",
-        "url": lambda voice: f"https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/{voice}/low/en_US-{voice}-low.onnx",
-    },  # Supported voices: https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US (only low variants!)
+    # "piper": {
+    #     "class": PiperModel,
+    #     "path": "piper",
+    #     "url": lambda voice: f"https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/{voice}/low/en_US-{voice}-low.onnx",
+    # },  # Supported voices: https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US (only low variants!)
     "coqui": {
         "class": CoquiModel,
         "path": "coqui",
