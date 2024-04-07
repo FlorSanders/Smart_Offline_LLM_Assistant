@@ -45,6 +45,7 @@ class ASR:
         """
         self.logger.debug("Transcribing audio")
         transcription = self.model.transcribe()
+        transcription = transcription.strip()
         self.logger.debug(transcription)
         return transcription
 
