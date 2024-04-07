@@ -62,6 +62,11 @@ def run_pipeline(config_path, log_level):
             play_wave_file(config["asr_done_sound"])
             time.sleep(0.1)
 
+        # Handle empty prompt
+        if not len(prompt):
+            time.sleep(0.25)
+            continue
+
         # Process prompt
         if config["llm_skip"]:
             response = prompt
