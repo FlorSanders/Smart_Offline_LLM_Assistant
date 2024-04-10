@@ -5,7 +5,7 @@ import sys
 # Configurate logging
 name = sys.argv[0].replace(".py", "")
 logging.basicConfig(
-    level=logging.WARNING,
+    level=logging.ERROR,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[logging.FileHandler(f"{name}.log"), logging.StreamHandler()],
 )
