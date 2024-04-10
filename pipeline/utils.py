@@ -2,6 +2,13 @@ import json
 import logging
 import sys
 
+# Configurate logging
+name = sys.argv[0].replace(".py", "")
+logging.basicConfig(
+    level=logging.ERROR,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[logging.FileHandler(f"{name}.log"), logging.StreamHandler()],
+)
 logger = None
 
 
@@ -32,13 +39,7 @@ def get_logger(log_level="INFO"):
     """
 
     global logger
-    # Figure out where script was called from
-    name = sys.argv[0].replace(".py", "")
     if logger is None:
         logger = logging.getLogger(name)
-        logging.basicConfig(
-            level=log_level,
-            format="%(asctime)s [%(levelname)s] %(message)s",
-            handlers=[logging.FileHandler(f"{name}.log"), logging.StreamHandler()],
-        )
+        logger.setLevel(log_level)
     return logger
