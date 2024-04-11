@@ -9,7 +9,7 @@ Without further ado, here are the installation steps:
 
 1. Perform a clean install on the Jetson Nano following [official instructions](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#setup)
 2. Run the following commands to install all the dependencies.
-    - NOTE: For specific package versions, please refer to the [`requirements.txt`](./requirements.txt) file included in the repository.
+   - NOTE: For specific package versions, please refer to the [`requirements.txt`](./requirements.txt) file included in the repository.
 
 ```bash
 # Update package registry
@@ -58,7 +58,6 @@ Once installed, run the program using the following command
 LD_PRELOAD=~/.local/lib/python3.7/site-packages/scikit_learn.libs/libgomp-d22c30c5.so.1.0.0:/usr/lib/aarch64-linux-gnu/libgomp.so.1 python3.7
 ```
 
-
 ## Large Language Model
 
 Depending on the large language model provider you wish to use, additional setup steps are required.
@@ -71,9 +70,8 @@ To use [OpenAI](https://openai.com/) GPT models as your LLM backend, you have to
 OPENAI_API_KEY=YOUR-KEY
 ```
 
-### LlamaEdge (self-hosted)
+### LlamaEdge $\rightarrow$ Llama.cpp (self-hosted)
 
-To use a self-hosted model, the [llamaedge](https://llamaedge.com/) framework is highly encouraged as it supports a number of pre-trained models as well as your own fine-tuned ones.
+While [llamaedge](https://llamaedge.com/) is the easiest way to deploy LLMs on many devices, it was found not to be supported on the Nvidia Jetson Nano.
 
-To get up and running with LLamaEdge, follow the instructions in their [quickstart guide](https://github.com/LlamaEdge/LlamaEdge#readme).
-
+Instead use our [`llama.cpp`](./SetupJetsonNanoLLM.md) setup guide to deploy TinyLlama on the Nvidia Jetson.
