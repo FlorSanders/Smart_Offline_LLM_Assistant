@@ -200,3 +200,5 @@ models/**
 *.krs
 !models/wakeword/
 !models/wakeword/hey_sola.*
+!models/llm/
+!models/llm/llama_binaries.zip
