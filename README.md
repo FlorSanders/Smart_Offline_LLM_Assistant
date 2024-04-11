@@ -3,7 +3,7 @@
    <h1 align="center">Smart Offline-first LLM Assistant</h1>
 </div>
 
-## About
+## ℹ️ About
 
 **SOLA** is a Smart Offline-first LLM Assistant.  
 By adopting an offline-first approach to data and model execution, privacy is guaranteed.  
@@ -72,7 +72,7 @@ Keep track of the progress of this project below:
 - [ ] LLM Tool Learning
 - [ ] Tool Access Integration
 
-## ℹ️ Similar Projects
+## 🚀 Similar Projects
 
 This project is supposed to be a proof-of-concept.  
 There are a lot of interesting projects out there that are developed to a more mature point.  
