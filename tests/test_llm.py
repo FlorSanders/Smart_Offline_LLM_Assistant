@@ -26,11 +26,11 @@ def main(
     logger = get_logger(log_level=log_level)
     logger.info("Program Initialized")
 
-    # Intialize tts
+    # Intialize llm
     llm = LLM(config)
 
     # LLM processing
-    prompt = "What can you do?"
+    prompt = "What is your name?"
     response = llm(prompt)
     print(response)
 

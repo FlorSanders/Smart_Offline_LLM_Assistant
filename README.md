@@ -3,7 +3,7 @@
    <h1 align="center">Smart Offline-first LLM Assistant</h1>
 </div>
 
-## About
+## ℹ️ About
 
 **SOLA** is a Smart Offline-first LLM Assistant.  
 By adopting an offline-first approach to data and model execution, privacy is guaranteed.  
@@ -52,8 +52,7 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
 4. Large Language Model (LLM) integration with:
    - [LlamaEdge](https://llamaedge.com/)
    - [OpenAI GPT 3/4](https://openai.com/gpt-4)
-5. Large Language Model Tool Integration with [LangChain](https://www.langchain.com/)
-6. Speech Synthesis / Text-to-Speech with:
+5. Speech Synthesis / Text-to-Speech with:
    - [Piper](https://github.com/rhasspy/piper)
    - [Coqui TTS](https://docs.coqui.ai/en/dev/index.html) (Formerly [Mozilla TTS](https://github.com/mozilla/TTS))
    - [MycroftAI/mimic3](https://github.com/MycroftAI/mimic3)
@@ -70,9 +69,11 @@ Keep track of the progress of this project below:
   - [x] OpenAI ChatGPT
   - [x] Local Webserver model
 - [ ] LLM Tool Learning
-- [ ] Tool Access Integration
+- [x] Tool Access Integration
+  - [x] Without langchain: https://archive.is/59I3s, https://archive.is/TwK5D
+  - [ ] With langchain -> Shelved because of compatibility issues with Python3.7 on Jetson Nano
 
-## ℹ️ Similar Projects
+## 🚀 Similar Projects
 
 This project is supposed to be a proof-of-concept.  
 There are a lot of interesting projects out there that are developed to a more mature point.  
