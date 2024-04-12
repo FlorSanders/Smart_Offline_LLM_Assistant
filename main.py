@@ -2,7 +2,7 @@ import typer
 from pipeline import run_pipeline
 
 
-def main(config_path: str = "./config.json", log_level: str = "INFO"):
+def main(config_path: str = "./config.json", log_level: str = "DEBUG"):
     """
     Local-First LLM Voice Assistant
     """
