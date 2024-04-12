@@ -3,6 +3,7 @@ import sys
 import numpy as np
 import requests
 import re
+import inspect
 from urllib import parse
 from .utils import get_logger
 
@@ -34,6 +35,43 @@ class Tool:
         self.name = name
         self.description = description
         self.logger = get_logger()
+
+    def __call__(self, *args, **kwargs):
+        """
+        Call the tool with the given arguments and keyword arguments.
+        ---
+        Args:
+        - *args: Positional arguments
+        - **kwargs: Keyword arguments
+
+        Returns:
+        - result: Result of the tool
+        """
+
+        raise NotImplementedError("__call__() is not implemented in base class")
+
+    def __str__(self):
+        """
+        Return a string representation of the tool.
+        ---
+        Returns:
+        - str: String representation of the tool
+        """
+        args = f"{inspect.signature(self.__call__)}".replace("(", "(args: ")
+        return f"{self.description} {args}"
+
+
+class Answer(Tool):
+    """
+    The final answer tool allows providing the user with a final answer to the question.
+    ---
+    """
+
+    def __init__(self):
+        super().__init__("Answer", "Provide a final answer to a question.")
+
+    def __call__(self, answer):
+        pass
 
 
 class Algebra(Tool):
@@ -200,7 +238,7 @@ class Search(Tool):
 
         return keyword_url
 
-    def _lookup_keyword_url_description(self, keyword_url: str):
+    def _lookup_keyword_url_description(self, keyword_url):
         """
         Find description for a given keyword url
         ---
@@ -249,7 +287,7 @@ class Search(Tool):
 
         return description
 
-    def __call__(self, keyword: str):
+    def __call__(self, keyword):
         """
         Find description for a given keyword
         ---
@@ -269,6 +307,7 @@ class Search(Tool):
 
 # Export dictionary with all available tools
 tools = {
+    "answer": Answer,
     "algebra": Algebra,
     "weather": Weather,
     "search": Search,
