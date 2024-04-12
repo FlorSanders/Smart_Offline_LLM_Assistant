@@ -1,7 +1,9 @@
 import os
 import wave
+import re
 from urllib.request import urlretrieve
 from piper.voice import PiperVoice
+from num2words import num2words
 import torch
 from TTS.api import TTS as CoquiTTS
 from mycroft_plugin_tts_mimic3 import Mimic3TTSPlugin
@@ -32,12 +34,62 @@ class TTS:
         # Config
         self.model_config = models[config.get("tts_model")]
         self.model = self.model_config["class"](config)
+        self.character_map = {
+            "°": "degree",
+            "%": "percent",
+            "$": "dollar",
+            "£": "pound",
+            "€": "euro",
+            "&": "and",
+            "@": "at",
+            "#": "hashtag",
+            "*": "asterisk",
+        }
+
+    def _replace_numbers_with_words(self, text):
+        """
+        Replace numbers with words
+        ---
+        Args:
+        - text: Text to be processed
+        """
+
+        # Find numbers
+        matches = re.findall(r"(\d+\.{0,1}\d+)", text)
+
+        # Replace all numbers
+        for match in matches:
+            text = text.replace(match, f" {num2words(float(match))} ")
+
+        return text
+
+    def _replace_special_characters_with_words(self, text):
+        """
+        Replace special characters with words
+        ---
+        Args:
+        - text: Text to be processed
+        """
+
+        # Find special characters
+        matches = re.findall(r"([^A-zÀ-ú\s,?;.:\/0-9])", text)
+
+        # Replace known special characters
+        for match in matches:
+            if match in self.character_map:
+                text = text.replace(match, f" {self.character_map[match]} ")
+            else:
+                self.logger.warning(f"Unknown special character: {match}")
+
+        return text
 
     def speak(self, text):
         text = text.strip()
         if len(text) == 0:
             self.logger.warning("Empty text, skipping tts")
             return
+        text = self._replace_numbers_with_words(text)
+        text = self._replace_special_characters_with_words(text)
         self.logger.debug(f"Speaking text: {text}")
         self.model.speak(text)
 

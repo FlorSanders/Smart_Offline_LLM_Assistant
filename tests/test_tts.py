@@ -30,7 +30,7 @@ def main(
     tts = TTS(config)
 
     # Speak
-    text = "Hello world!"
+    text = "The current temperature in Halle, Belgium is 13.1°C with a relative humidity of 92% and a wind speed of 6.9 km/h."
     tts.speak(text)
 
 
