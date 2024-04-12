@@ -42,6 +42,8 @@ Their configuration options are listed below:
   - `openai`: `gpt-3.5-turbo`, `gpt-4`
   - `llamaedge`: self-hosted llama-based model ([options](https://github.com/LlamaEdge/LlamaEdge/blob/main/models.md), e.g. `TinyLlama-1.1B-Chat-v1.0`)
 - `llm_system_message`: System message sent to the LLM.
+- `llm_use_tools`: Whether to use provide tool access to the LLM or not.
+- `llm_tools`: What tools to have the LLM access. If set to default value `null`, access to all tools is enabled.
 - `llm_skip`: Whether to skip the LLM altogether (used for testing).
 
 ## Text-to-Speech

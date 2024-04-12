@@ -4,6 +4,7 @@ from .utils import get_logger, get_config
 from .audio import play_wave_file
 from .microphone import Microphone
 from .llm import LLM
+from .toolllm import ToolLLM
 from .tts import TTS
 import time
 import os
@@ -24,18 +25,27 @@ def run_pipeline(config_path, log_level):
     # Load configuration
     logger.debug("Loading Configuration")
     config = get_config(config_path)
+    llm_skip = config["llm_skip"]
+    llm_use_tools = config["llm_use_tools"]
 
-    # Initialize pipeline models
+    # Initialize voice pipeline models
     logger.debug("Initializing Assistant Pipeline")
     mic = Microphone(config)
     wakeword = Wakeword(config, mic)
     asr = ASR(config, mic)
-    # TODO: switch out llm for tool-llm, with a plan-execute-summarize feedback loop
-    if config["llm_skip"]:
-        llm = None
-    else:
-        llm = LLM(config)
     tts = TTS(config)
+
+    # Initialize LLM / ToolLLM
+    if llm_skip:
+        # Skipping over LLM execution
+        llm = None
+    elif llm_use_tools:
+        # LLM with Tool Usage
+        llm_model = LLM(config)
+        llm = ToolLLM(config, llm_model, config["llm_tools"])
+    else:
+        # Basic LLM
+        llm = LLM(config)
 
     # Run pipeline
     logger.info("Running Assistant Pipeline")
@@ -68,7 +78,7 @@ def run_pipeline(config_path, log_level):
             continue
 
         # Process prompt
-        if config["llm_skip"]:
+        if llm_skip:
             response = prompt
         else:
             response = llm(prompt)
