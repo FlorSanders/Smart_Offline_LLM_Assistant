@@ -39,6 +39,11 @@ Run a test by calling the test script from the main directory.
 python tests/test_[something].py
 ```
 
+## ✅ Benchmarking
+
+The performance of a tool-llm on various sample tasks can be evaluated using the `evaluate_toolllm.py` script.  
+The results from our experiments can be found in the `logs` directory.
+
 ## 🏛️ Architecture
 
 The pipeline that powers the voice assistant stands on the shoulders of giants:
@@ -50,28 +55,14 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
    - [Vosk](https://alphacephei.com/vosk/install)
    - [Coqui STT](https://stt.readthedocs.io/en/latest/) (Formerly [Mozilla DeepSpeech](https://github.com/mozilla/DeepSpeech))
 4. Large Language Model (LLM) integration with:
-   - [LlamaEdge](https://llamaedge.com/)
+   - [LlamaEdge](https://llamaedge.com/) (
+     - Use Llama 3 8B for the best experience.)
+     - A notebook for fine-tuning TinyLlama for tool usage is included in the `finetuning` directory.
    - [OpenAI GPT 3/4](https://openai.com/gpt-4)
 5. Speech Synthesis / Text-to-Speech with:
    - [Piper](https://github.com/rhasspy/piper)
    - [Coqui TTS](https://docs.coqui.ai/en/dev/index.html) (Formerly [Mozilla TTS](https://github.com/mozilla/TTS))
    - [MycroftAI/mimic3](https://github.com/MycroftAI/mimic3)
-
-## ✅ TODO
-
-Keep track of the progress of this project below:
-
-- [x] Wakeword Algorithm
-- [x] Automatic Speech Recognition Model, integrate multiple models:
-- [x] Speech to Text Model, Integrate multiple models:
-- [ ] Speaker Identification Model
-- [x] LLM Integration
-  - [x] OpenAI ChatGPT
-  - [x] Local Webserver model
-- [ ] LLM Tool Learning
-- [x] Tool Access Integration
-  - [x] Without langchain: https://archive.is/59I3s, https://archive.is/TwK5D
-  - [ ] With langchain -> Shelved because of compatibility issues with Python3.7 on Jetson Nano
 
 ## 🚀 Similar Projects
 

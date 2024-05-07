@@ -36,11 +36,11 @@ Their configuration options are listed below.
 This project aims to support interfacing with multiple LLMs.
 Their configuration options are listed below:
 
-- `llm_provider`: LLM Service Provider (supported values: `openai`, `llamaedge`)
+- `llm_provider`: LLM Service Provider (supported values: `openai`, `llama-edge`)
 - `llm_provider_url`: To overwrite the `base_url` to which api calls should be made.
 - `llm_model`: Name of the LLM model
   - `openai`: `gpt-3.5-turbo`, `gpt-4`
-  - `llamaedge`: self-hosted llama-based model ([options](https://github.com/LlamaEdge/LlamaEdge/blob/main/models.md), e.g. `TinyLlama-1.1B-Chat-v1.0`)
+  - `llama-edge`: self-hosted llama-based model ([options](https://github.com/LlamaEdge/LlamaEdge/blob/main/models.md), e.g. `TinyLlama-1.1B-Chat-v1.0`)
 - `llm_system_message`: System message sent to the LLM.
 - `llm_use_tools`: Whether to use provide tool access to the LLM or not.
 - `llm_tools`: What tools to have the LLM access. If set to default value `null`, access to all tools is enabled.

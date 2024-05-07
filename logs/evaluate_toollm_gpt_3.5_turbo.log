@@ -1,0 +1,496 @@
+2024-05-06 13:18:00,670 [INFO] Evaluating task 0:
+What is your name?
+2024-05-06 13:18:00,671 [INFO] Prompting LLM
+2024-05-06 13:18:00,671 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What is your name?
+2024-05-06 13:18:02,097 [INFO] LLM response:
+{
+  "tool": "answer",
+  "arg": "Sola"
+}
+2024-05-06 13:18:02,098 [INFO] Response:
+Sola
+2024-05-06 13:18:02,098 [INFO] Evaluating task 1:
+What can you help me with?
+2024-05-06 13:18:02,098 [INFO] Prompting LLM
+2024-05-06 13:18:02,098 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What can you help me with?
+2024-05-06 13:18:04,307 [INFO] LLM response:
+{
+  "tool": "answer",
+  "arg": "I can assist you with answering questions, solving algebraic equations, checking the weather, or searching for information."
+}
+2024-05-06 13:18:04,307 [INFO] Response:
+I can assist you with answering questions, solving algebraic equations, checking the weather, or searching for information.
+2024-05-06 13:18:04,308 [INFO] Evaluating task 2:
+Write me a poem about the tools you have access to.
+2024-05-06 13:18:04,308 [INFO] Prompting LLM
+2024-05-06 13:18:04,308 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+Write me a poem about the tools you have access to.
+2024-05-06 13:18:05,175 [INFO] LLM response:
+{
+  "tool": "answer",
+  "arg": "I can help with any task you ask, offering answers for every task."
+}
+2024-05-06 13:18:05,176 [INFO] Response:
+I can help with any task you ask, offering answers for every task.
+2024-05-06 13:18:05,176 [INFO] Evaluating task 3:
+What is the current weather in Columbia University, NYC?
+2024-05-06 13:18:05,176 [INFO] Prompting LLM
+2024-05-06 13:18:05,176 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What is the current weather in Columbia University, NYC?
+2024-05-06 13:18:06,611 [INFO] LLM response:
+{
+    "tool": "weather",
+    "arg": "Columbia University, NYC"
+}
+2024-05-06 13:18:06,611 [INFO] Running tool weather(Columbia University, NYC)
+2024-05-06 13:18:09,067 [INFO] Prompting LLM
+2024-05-06 13:18:09,067 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+Tool "weather" with argument "Columbia University, NYC" returned "{'time': '2024-05-06T17:15 (iso8601)', 'interval': '900 (seconds)', 'temperature_2m': '16.6 (°C)', 'relative_humidity_2m': '92 (%)', 'precipitation_probability': '16 (%)', 'precipitation': '0.0 (mm)', 'wind_speed_10m': '3.2 (km/h)'}"
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is the current weather in Columbia University, NYC?
+2024-05-06 13:18:10,750 [INFO] LLM response:
+{
+  "tool": "answer",
+  "arg": "The current weather at Columbia University, NYC is 16.6°C with 92% humidity, 0.0mm precipitation, and 3.2 km/h wind speed."
+}
+2024-05-06 13:18:10,750 [INFO] Response:
+The current weather at Columbia University, NYC is 16.6°C with 92% humidity, 0.0mm precipitation, and 3.2 km/h wind speed.
+2024-05-06 13:18:10,750 [INFO] Evaluating task 4:
+What is fifty seven multiplied by three hundred and twenty one minus four?
+2024-05-06 13:18:10,750 [INFO] Prompting LLM
+2024-05-06 13:18:10,750 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What is fifty seven multiplied by three hundred and twenty one minus four?
+2024-05-06 13:18:11,455 [INFO] LLM response:
+{
+  "tool": "algebra",
+  "arg": 18193
+}
+2024-05-06 13:18:11,455 [WARNING] Tool argument must be a string of non-zero length.
+2024-05-06 13:18:11,455 [INFO] Prompting LLM
+2024-05-06 13:18:11,456 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+WARNING: Tool argument must be a string of non-zero length.
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is fifty seven multiplied by three hundred and twenty one minus four?
+2024-05-06 13:18:12,402 [INFO] LLM response:
+```json
+{
+  "tool": "algebra",
+  "arg": "57*321-4"
+}
+```
+2024-05-06 13:18:12,402 [INFO] Running tool algebra(57*321-4)
+2024-05-06 13:18:12,403 [INFO] Prompting LLM
+2024-05-06 13:18:12,403 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+WARNING: Tool argument must be a string of non-zero length.
+Tool "algebra" with argument "57*321-4" returned "18293"
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is fifty seven multiplied by three hundred and twenty one minus four?
+2024-05-06 13:18:13,606 [INFO] LLM response:
+{"tool": "answer", "arg": "18293"}
+2024-05-06 13:18:13,607 [INFO] Response:
+18293
+2024-05-06 13:18:13,607 [INFO] Evaluating task 5:
+In what city did the 2020 olympic games take place?
+2024-05-06 13:18:13,607 [INFO] Prompting LLM
+2024-05-06 13:18:13,607 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+In what city did the 2020 olympic games take place?
+2024-05-06 13:18:14,547 [INFO] LLM response:
+{
+	"tool": "search",
+	"arg": "2020 Summer Olympics"
+}
+2024-05-06 13:18:14,547 [INFO] Running tool search(2020 Summer Olympics)
+2024-05-06 13:18:15,994 [INFO] Prompting LLM
+2024-05-06 13:18:15,994 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+Tool "search" with argument "2020 Summer Olympics" returned "The 2020 Summer Olympics (Japanese: 2020年夏季オリンピック, Hepburn: Nisen Nijū-nen Kaki Orinpikku), officially the Games of the XXXII Olympiad (第三十二回オリンピック競技大会, Dai Sanjūni-kai Orinpikku Kyōgi Taikai) and also known as Tokyo 2020 (東京2020, Tōkyō Nii Zero Nii Zero), was an international multi-sport event held from 23 July to 8 August 2021 in Tokyo, Japan, with some preliminary events that began on 21 July."
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+In what city did the 2020 olympic games take place?
+2024-05-06 13:18:17,458 [INFO] LLM response:
+{
+  "tool": "answer",
+  "arg": "Tokyo"
+}
+2024-05-06 13:18:17,458 [INFO] Response:
+Tokyo
+2024-05-06 13:18:17,458 [INFO] Evaluating task 6:
+What is the current weather in the city where the 2020 olympic games took place?
+2024-05-06 13:18:17,458 [INFO] Prompting LLM
+2024-05-06 13:18:17,458 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What is the current weather in the city where the 2020 olympic games took place?
+2024-05-06 13:18:18,596 [INFO] LLM response:
+{
+    "tool": "weather",
+    "arg": "Tokyo"
+}
+2024-05-06 13:18:18,596 [INFO] Running tool weather(Tokyo)
+2024-05-06 13:18:19,733 [INFO] Prompting LLM
+2024-05-06 13:18:19,733 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+Tool "weather" with argument "Tokyo" returned "{'time': '2024-05-06T17:15 (iso8601)', 'interval': '900 (seconds)', 'temperature_2m': '18.8 (°C)', 'relative_humidity_2m': '86 (%)', 'precipitation_probability': '0 (%)', 'precipitation': '0.1 (mm)', 'wind_speed_10m': '8.0 (km/h)'}"
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is the current weather in the city where the 2020 olympic games took place?
+2024-05-06 13:18:22,788 [INFO] LLM response:
+{
+    "tool": "answer",
+    "arg": "The current weather in the city where the 2020 Olympic games took place is: {'time': '2024-05-06T17:15 (iso8601)', 'interval': '900 (seconds)', 'temperature_2m': '18.8 (°C)', 'relative_humidity_2m': '86 (%)', 'precipitation_probability': '0 (%)', 'precipitation': '0.1 (mm)', 'wind_speed_10m': '8.0 (km/h)'}"
+}
+2024-05-06 13:18:22,788 [WARNING] Response must be in valid JSON format.
+2024-05-06 13:18:22,788 [INFO] Prompting LLM
+2024-05-06 13:18:22,788 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+Tool "weather" with argument "Tokyo" returned "{'time': '2024-05-06T17:15 (iso8601)', 'interval': '900 (seconds)', 'temperature_2m': '18.8 (°C)', 'relative_humidity_2m': '86 (%)', 'precipitation_probability': '0 (%)', 'precipitation': '0.1 (mm)', 'wind_speed_10m': '8.0 (km/h)'}"
+WARNING: Response must be in valid JSON format.
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is the current weather in the city where the 2020 olympic games took place?
+2024-05-06 13:18:24,795 [INFO] LLM response:
+{
+  "tool": "answer",
+  "arg": "The 2020 Olympic Games took place in Tokyo. The current weather in Tokyo is 18.8°C with 86% humidity, 0% precipitation probability, wind speed of 8.0 km/h, and 0.1mm precipitation."
+}
+2024-05-06 13:18:24,795 [INFO] Response:
+The 2020 Olympic Games took place in Tokyo. The current weather in Tokyo is 18.8°C with 86% humidity, 0% precipitation probability, wind speed of 8.0 km/h, and 0.1mm precipitation.
+2024-05-06 13:18:24,795 [INFO] Evaluating task 7:
+What is the sum of the current temperature and humidity at Columbia University?
+2024-05-06 13:18:24,796 [INFO] Prompting LLM
+2024-05-06 13:18:24,796 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What is the sum of the current temperature and humidity at Columbia University?
+2024-05-06 13:18:25,616 [INFO] LLM response:
+{
+    "tool": "weather",
+    "arg": "Columbia University"
+}
+2024-05-06 13:18:25,616 [INFO] Running tool weather(Columbia University)
+2024-05-06 13:18:26,297 [INFO] Prompting LLM
+2024-05-06 13:18:26,297 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+Tool "weather" with argument "Columbia University" returned "{'time': '2024-05-06T17:15 (iso8601)', 'interval': '900 (seconds)', 'temperature_2m': '16.6 (°C)', 'relative_humidity_2m': '92 (%)', 'precipitation_probability': '16 (%)', 'precipitation': '0.0 (mm)', 'wind_speed_10m': '3.2 (km/h)'}"
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is the sum of the current temperature and humidity at Columbia University?
+2024-05-06 13:18:27,101 [INFO] LLM response:
+{
+    "tool": "answer",
+    "arg": "108.6 (°C)"
+}
+2024-05-06 13:18:27,102 [INFO] Response:
+108.6 (°C)
+2024-05-06 13:18:27,102 [INFO] Evaluating task 8:
+What is the product of all the numbers of the year when the Olympic Games were held in Beijjing?
+2024-05-06 13:18:27,102 [INFO] Prompting LLM
+2024-05-06 13:18:27,102 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What is the product of all the numbers of the year when the Olympic Games were held in Beijjing?
+2024-05-06 13:18:29,751 [INFO] LLM response:
+```json
+{
+	"tool": "answer",
+	"arg": 2019
+}
+```
+2024-05-06 13:18:29,752 [WARNING] Tool argument must be a string of non-zero length.
+2024-05-06 13:18:29,752 [INFO] Prompting LLM
+2024-05-06 13:18:29,752 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+WARNING: Tool argument must be a string of non-zero length.
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is the product of all the numbers of the year when the Olympic Games were held in Beijjing?
+2024-05-06 13:18:30,563 [INFO] LLM response:
+{
+	"tool": "algebra",
+	"arg": "2008*2012"
+}
+2024-05-06 13:18:30,563 [INFO] Running tool algebra(2008*2012)
+2024-05-06 13:18:30,563 [INFO] Prompting LLM
+2024-05-06 13:18:30,563 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+WARNING: Tool argument must be a string of non-zero length.
+Tool "algebra" with argument "2008*2012" returned "4040096"
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is the product of all the numbers of the year when the Olympic Games were held in Beijjing?
+2024-05-06 13:18:31,357 [INFO] LLM response:
+{"tool": "answer", "arg": "4040096"}
+2024-05-06 13:18:31,357 [INFO] Response:
+4040096
+2024-05-06 13:18:31,357 [INFO] Evaluating task 9:
+Write a poem about the current weather in the city where the 2020 olympic games took place.
+2024-05-06 13:18:31,357 [INFO] Prompting LLM
+2024-05-06 13:18:31,357 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+Write a poem about the current weather in the city where the 2020 olympic games took place.
+2024-05-06 13:18:32,291 [INFO] LLM response:
+{
+    "tool": "weather",
+    "arg": "Tokyo"
+}
+2024-05-06 13:18:32,291 [INFO] Running tool weather(Tokyo)
+2024-05-06 13:18:33,344 [INFO] Prompting LLM
+2024-05-06 13:18:33,344 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+Tool "weather" with argument "Tokyo" returned "{'time': '2024-05-06T17:15 (iso8601)', 'interval': '900 (seconds)', 'temperature_2m': '18.8 (°C)', 'relative_humidity_2m': '86 (%)', 'precipitation_probability': '0 (%)', 'precipitation': '0.1 (mm)', 'wind_speed_10m': '8.0 (km/h)'}"
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+Write a poem about the current weather in the city where the 2020 olympic games took place.
+2024-05-06 13:18:34,750 [INFO] LLM response:
+{
+	"tool": "answer",
+	"arg": "I'm sorry, I do not have information about the city where the 2020 Olympic games took place."
+}
+2024-05-06 13:18:34,750 [INFO] Response:
+I'm sorry, I do not have information about the city where the 2020 Olympic games took place.
+2024-05-06 13:18:34,750 [INFO] Evaluating task 10:
+What is the sum of the current temperature and humidity in the city where the 2020 olympic games took place?
+2024-05-06 13:18:34,751 [INFO] Prompting LLM
+2024-05-06 13:18:34,751 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+What is the sum of the current temperature and humidity in the city where the 2020 olympic games took place?
+2024-05-06 13:18:35,690 [INFO] LLM response:
+{
+    "tool": "weather",
+    "arg": "Tokyo"
+}
+2024-05-06 13:18:35,690 [INFO] Running tool weather(Tokyo)
+2024-05-06 13:18:36,852 [INFO] Prompting LLM
+2024-05-06 13:18:36,852 [INFO] Prompt:
+Your name is Sola, you are a helpful voice assistant. Keep responses short.
+---
+Here are the tools you can use:
+- answer: Provide a final answer to a question. (args: answer)
+- algebra: Solve algebraic equations using python (+ - * /). (args: equation)
+- weather: Get the current weather at a location. (args: location)
+- search: Search for information about a keyword on DBPedia. (args: keyword)
+You MUST always use one of the tools.
+Answers MUST be formatted in JSON format with "tool": name-of-tool and "arg": arg-value keys
+---
+By using the tools you have obtained this information:
+Tool "weather" with argument "Tokyo" returned "{'time': '2024-05-06T17:15 (iso8601)', 'interval': '900 (seconds)', 'temperature_2m': '18.8 (°C)', 'relative_humidity_2m': '86 (%)', 'precipitation_probability': '0 (%)', 'precipitation': '0.1 (mm)', 'wind_speed_10m': '8.0 (km/h)'}"
+Once you have enough information, make use of the "answer" tool to provide a response to the user.
+---
+What is the sum of the current temperature and humidity in the city where the 2020 olympic games took place?
+2024-05-06 13:18:37,666 [INFO] LLM response:
+{
+    "tool": "answer",
+    "arg": "107.8"
+}
+2024-05-06 13:18:37,666 [INFO] Response:
+107.8

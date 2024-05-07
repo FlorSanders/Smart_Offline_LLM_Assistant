@@ -41,13 +41,13 @@ class LLM:
         - response: Response from the LLM
         """
 
-        self.logger.debug(f"Prompting LLM")
-        self.logger.debug(f"Prompt: {prompt}")
+        self.logger.info(f"Prompting LLM")
+        self.logger.info(f"Prompt:\n{prompt}")
         if system_prompt is not None:
             self.logger.debug(f"System prompt: {system_prompt}")
 
         response = self.model(prompt, system_prompt=system_prompt)
-        self.logger.debug(f"LLM response: {response}")
+        self.logger.info(f"LLM response:\n{response}")
         return response
 
 

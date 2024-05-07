@@ -143,7 +143,11 @@ class Weather(Tool):
 
         # Parsing data
         data = response.json()
-        return data[0]["lat"], data[0]["lon"]
+        try:
+            lat, lon = data[0]["lat"], data[0]["lon"]
+        except (KeyError, IndexError):
+            raise ToolError(f"No coordinates found for location {location}")
+        return lat, lon
 
     def _get_weather_data(self, coords):
         """

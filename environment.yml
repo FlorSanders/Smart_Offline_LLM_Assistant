@@ -1,4 +1,4 @@
-name: llm_voice_assistant
+name: sola
 channels:
   - defaults
 dependencies:

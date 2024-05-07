@@ -63,6 +63,7 @@ class ToolLLM:
         response = ""
         context = ""
         initial_prompt = prompt
+        tools_called = []
 
         # Prompt the LLM until we have a final response
         for iteration in range(max_iterations):
@@ -102,9 +103,18 @@ class ToolLLM:
                     response = tool_arg
                     break
 
+                # Check if tool has already been called with the same argument
+                if (tool_name, tool_arg) in tools_called:
+                    warning_message = f'Tool "{tool_name}" with argument "{tool_arg}" has already been called. Try to make use of the "answer" tool.'
+                    context += f"WARNING: {warning_message}\n"
+                    self.logger.warning(warning_message)
+                    continue
+
                 # Run tool
                 try:
+                    self.logger.info(f"Running tool {tool_name}({tool_arg})")
                     tool_result = self.tools[tool_name](tool_arg)
+                    tools_called.append((tool_name, tool_arg))
                     context += f'Tool "{tool_name}" with argument "{tool_arg}" returned "{tool_result}"\n'
                 except ToolError as err:
                     warning_message = f'Tool "{tool_name}" raised an error: {err}'
@@ -113,9 +123,14 @@ class ToolLLM:
                     continue
 
             except Exception as e:
-                print(e)
+                self.logger.error(e)
                 raise Exception(e)
-        else:  # Loop did not break
-            raise ValueError(f"Max iterations ({max_iterations}) reached.")
+        else:
+            # Loop did not break - warning
+            self.logger.warning(
+                f"Max iterations ({max_iterations}) reached. Falling back to pure LLM."
+            )
+            # Return pure LLM response to initial prompt
+            return self.llm(initial_prompt)
 
         return response

@@ -44,7 +44,7 @@ class Wakeword:
             inference_framework=self.framework,
         )
 
-    def detect(self):
+    def detect(self, verbose=True):
         """
         Detect wakeword in audio chunk
         ---
@@ -75,6 +75,8 @@ class Wakeword:
             # Detect wakeword
             prediction = self.model.predict(audio_chunk)
             prediction_value = prediction[self.model_name]
+            if verbose:
+                self.logger.debug(f"Prediction: {prediction_value}")
             wakeword_detected = prediction_value > self.threshold
 
             # Debounce detection

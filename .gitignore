@@ -200,3 +200,6 @@ models/**
 *.krs
 !models/wakeword/
 !models/wakeword/hey_sola.*
+
+# Tool-LLM evaluation logs
+!logs/*.log
