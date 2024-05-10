@@ -9,6 +9,13 @@
 By adopting an offline-first approach to data and model execution, privacy is guaranteed.  
 Still, its integration with LLM AI models and access to external (online) tools make it smart.
 
+The authors of the project are:
+
+- [Flor Sanders (fps2116)](https://www.florsanders.be)
+- [Charan Santhirasegaran (cs4347)](mailto:cs4347@columbia.edu)
+
+More information on the project can be found in the [report](./report.pdf) and [slides](./slides.pdf) included in the repository.
+
 ## 🔥 Quick Start
 
 Follow the [Setup Guide](./Setup.md) to install all requirements.
@@ -55,9 +62,9 @@ The pipeline that powers the voice assistant stands on the shoulders of giants:
    - [Vosk](https://alphacephei.com/vosk/install)
    - [Coqui STT](https://stt.readthedocs.io/en/latest/) (Formerly [Mozilla DeepSpeech](https://github.com/mozilla/DeepSpeech))
 4. Large Language Model (LLM) integration with:
-   - [LlamaEdge](https://llamaedge.com/) (
-     - Use Llama 3 8B for the best experience.)
-     - A notebook for fine-tuning TinyLlama for tool usage is included in the `finetuning` directory.
+   - [LlamaEdge](https://llamaedge.com/)
+     - Use Llama 3 8B for the best experience.
+     - A notebook for fine-tuning TinyLlama for tool usage is included in the `finetuning` directory. The fine-tuned weights can be downloaded from [Google Drive](https://drive.google.com/file/d/1yvO-ZFmFi-S1Yc3Gr8kn3cOtnlD_NJ2o/view).
    - [OpenAI GPT 3/4](https://openai.com/gpt-4)
 5. Speech Synthesis / Text-to-Speech with:
    - [Piper](https://github.com/rhasspy/piper)

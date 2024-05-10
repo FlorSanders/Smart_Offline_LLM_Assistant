@@ -203,3 +203,7 @@ models/**
 
 # Tool-LLM evaluation logs
 !logs/*.log
+
+# Report & Slides
+!report.pdf
+!slides.pdf
